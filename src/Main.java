@@ -12,6 +12,8 @@ public class Main{
         Controlador controlador = Controlador.getInstance();
         controlador.setAlphabet(Alpha);
         //System.out.println(controlador.encode("Las"));
+        //System.out.println(controlador.decode("00101101101001110011011001100000000"));
+
         System.out.println(controlador.decode("00000001100110010010101001011101001"));
 
     }

@@ -39,8 +39,9 @@ public class Controlador {
         Coder1 coder1 = new Coder1();
         Coder2 coder2 = new Coder2();
         String result = "";
-        result =  coder1.decode(input);
-        result = coder2.decode(result);
+        result =  coder2.decode(input);
+        System.out.println(result);
+        result = coder1.decode(result);
 
         return result;
     }

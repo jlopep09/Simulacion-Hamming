@@ -109,7 +109,13 @@ public class Coder2 implements Coder{
         Coder1 coder1 = new Coder1();
         int coder1blockSize = coder1.getCoder1BlockSize();
         int toRemove = input.length() % coder1blockSize;
+        System.out.println(toRemove);
+        if(toRemove> blocks.getLast().length()){
+            toRemove-=blocks.getLast().length();
+            blocks.removeLast();
+        }
         blocks.set(blocks.size()-1, blocks.getLast().substring(0,toRemove));
+
         //concat result blocks
         StringBuilder sb = new StringBuilder();
         for(int i = 0 ; i<blocks.size(); i++){
