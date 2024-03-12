@@ -1,4 +1,7 @@
 import controlador.Controlador;
+import modelo.utilities.traductor;
+
+import java.math.BigDecimal;
 
 public class Main{
     public static void main(String[] args){
@@ -8,5 +11,7 @@ public class Main{
         String binCodedInput = "00000001100110010010101001011101001";
         Controlador controlador = Controlador.getInstance();
         controlador.setAlphabet(Alpha);
+        System.out.println(controlador.encode("Las"));
+
     }
 }

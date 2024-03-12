@@ -33,4 +33,7 @@ public class Controlador {
         return result;
     }
 
+    public Alphabet getAlphabet() {
+        return _alphabet;
+    }
 }
