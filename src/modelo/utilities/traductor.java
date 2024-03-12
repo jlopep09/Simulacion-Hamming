@@ -53,15 +53,6 @@ public class traductor {
         String unscaledBinary = unscaledValue.toString(2);
         binaryRepresentation.append(unscaledBinary);
 
-        // Append zeros to the right to match the precision.
-        int diff = (scale * 10) - unscaledBinary.length(); // Multiply scale by 10 for precision
-        for (int i = 0; i < diff; i++) {
-            binaryRepresentation.append("0");
-        }
-
-        // Insert the decimal point at the appropriate position.
-        int decimalPosition = binaryRepresentation.length() - scale * 10; // Multiply scale by 10 for precision
-        binaryRepresentation.insert(decimalPosition, ".");
 
         return binaryRepresentation.toString();
     }

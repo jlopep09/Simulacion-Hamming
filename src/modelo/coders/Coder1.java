@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 public class Coder1 implements Coder{
     private int blockSize = 0;
     public Coder1(){
-        Double blockDoubleSize = Math.log(Controlador.getInstance().getAlphabet().length()) / Math.log(2);
-        blockSize = Integer.parseInt(blockDoubleSize+"");
+        double blockDoubleSize = Math.log(Controlador.getInstance().getAlphabet().length()) / Math.log(2);
+        blockSize = (int)blockDoubleSize;
         if(blockDoubleSize>blockSize){
             blockSize+=1;
         }
@@ -26,6 +26,8 @@ public class Coder1 implements Coder{
             StringBuilder temp = new StringBuilder();
             temp.append(_traductor.getBinaryRepresentationFromDecimal(new BigDecimal(_alphabet.getElementPos(input.charAt(i)))));
             if(temp.length() > blockSize){
+                System.out.println(temp.toString());
+                System.out.println(blockSize);
                 throw  new RuntimeException("binary representation is larger than blockSize");
             }
             while(temp.length()<blockSize){

@@ -4,6 +4,7 @@ public class Alphabet {
     private String Alphabet;
     public Alphabet(String input){
         checkInput(input);
+        this.Alphabet = input;
     }
     private void checkInput(String input){
         boolean valid = true;
