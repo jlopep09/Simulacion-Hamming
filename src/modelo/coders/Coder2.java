@@ -2,7 +2,7 @@ package modelo.coders;
 
 public class Coder2 implements Coder{
     @Override
-    public String encode() {
+    public String encode(String input) {
         return null;
     }
 
