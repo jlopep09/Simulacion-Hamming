@@ -23,4 +23,7 @@ public class Alphabet {
     public int getElementPos(char element){
         return this.Alphabet.indexOf(element);
     }
+    public int length(){
+        return this.Alphabet.length();
+    }
 }
