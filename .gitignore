@@ -28,3 +28,5 @@ replay_pid*
 /.idea/Simulacion-Hamming.iml
 /.idea/vcs.xml
 /.idea/uiDesigner.xml
+/.idea/.gitignore
+/Simulacion-Hamming.iml
