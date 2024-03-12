@@ -7,7 +7,7 @@ public class traductor {
     public traductor(){
 
     }
-    public BigDecimal getDecimalValueFromBinary(String binaryString){
+    public String getDecimalValueFromBinary(String binaryString){
         // Convert binary string to BigDecimal
         BigDecimal result = BigDecimal.ZERO;
         BigDecimal factor = BigDecimal.ONE;
@@ -23,18 +23,7 @@ public class traductor {
             factor = factor.multiply(BigDecimal.valueOf(2));
         }
 
-        // Convert fractional part
-        if (parts.length > 1) {
-            factor = BigDecimal.ONE.divide(BigDecimal.valueOf(2));
-            for (int i = 0; i < parts[1].length(); i++) {
-                if (parts[1].charAt(i) == '1') {
-                    result = result.add(factor);
-                }
-                factor = factor.divide(BigDecimal.valueOf(2));
-            }
-        }
-
-        return result;
+        return result.toString();
     }
     public String getBinaryRepresentationFromDecimal(BigDecimal decimalValue) {
         // Scale is the number of digits to the right of the decimal point.

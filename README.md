@@ -8,7 +8,7 @@ a desire alphabet.
 Implemented Features:
 [Yes/No]
 
-N - Input Coder
+Y - Input Coder
 
 N - Input Decoder
 

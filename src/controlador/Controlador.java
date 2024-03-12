@@ -32,6 +32,18 @@ public class Controlador {
 
         return result;
     }
+    public String decode(String input){
+        if(_alphabet == null){
+            throw new RuntimeException("Cant decode, you must set up the alphabet");
+        }
+        Coder1 coder1 = new Coder1();
+        Coder2 coder2 = new Coder2();
+        String result = "";
+        result =  coder1.decode(input);
+        result = coder2.decode(result);
+
+        return result;
+    }
 
     public Alphabet getAlphabet() {
         return _alphabet;

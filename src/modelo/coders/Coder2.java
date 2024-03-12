@@ -21,7 +21,7 @@ public class Coder2 implements Coder{
     public String encode(String input) {
 
         //Makes blocks from input
-        ArrayList<String> blocks = blockIt(input);
+        ArrayList<String> blocks = blockIt(input, blockSize);
         //Convert the blocks into a block matrix
         int[][] blocksMatrix = matrixIt(blocks);
 
@@ -47,15 +47,15 @@ public class Coder2 implements Coder{
         return blocksMatrix;
     }
 
-    private ArrayList<String> blockIt(String input) {
+    public ArrayList<String> blockIt(String input, int sizeOfBlock) {
         ArrayList<String> result = new ArrayList<>();
-        while(input.length() >= blockSize){
-            result.add(input.substring(0,4));
-            input = input.substring(4);
+        while(input.length() >= sizeOfBlock){
+            result.add(input.substring(0,sizeOfBlock));
+            input = input.substring(sizeOfBlock);
         }
         if(input.length() > 0 ){
-            while(input.length() < blockSize){
-                input = input+"01";
+            while(input.length() < sizeOfBlock){
+                input = input+"0";
             }
             result.add(input);
         }
@@ -98,7 +98,23 @@ public class Coder2 implements Coder{
 
 
     @Override
-    public String decode() {
-        return null;
+    public String decode(String input) {
+        //get blocks from input
+        ArrayList<String> blocks = blockIt(input, GcolumnCount);
+        //remove last 3 digits bc G is standard matrix and there is no noise.
+        for(int i = 0 ; i<blocks.size(); i++){
+            blocks.set(i, blocks.get(i).substring(0,blockSize));
+        }
+        //remove extra digits added while preparing blocks for coder2
+        Coder1 coder1 = new Coder1();
+        int coder1blockSize = coder1.getCoder1BlockSize();
+        int toRemove = input.length() % coder1blockSize;
+        blocks.set(blocks.size()-1, blocks.getLast().substring(0,toRemove));
+        //concat result blocks
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0 ; i<blocks.size(); i++){
+            sb.append(blocks.get(i));
+        }
+        return sb.toString();
     }
 }

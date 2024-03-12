@@ -27,4 +27,7 @@ public class Alphabet {
     public int length(){
         return this.Alphabet.length();
     }
+    public String getAlphabet(){
+        return Alphabet;
+    }
 }
