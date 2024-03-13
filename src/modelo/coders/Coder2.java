@@ -108,13 +108,14 @@ public class Coder2 implements Coder{
         //remove extra digits added while preparing blocks for coder2
         Coder1 coder1 = new Coder1();
         int coder1blockSize = coder1.getCoder1BlockSize();
-        int toRemove = input.length() % coder1blockSize;
+        int toRemove = input.length() % blockSize;
         System.out.println(toRemove);
+        System.out.println(blocks.getLast().length());
         if(toRemove> blocks.getLast().length()){
             toRemove-=blocks.getLast().length();
             blocks.removeLast();
         }
-        blocks.set(blocks.size()-1, blocks.getLast().substring(0,toRemove));
+        blocks.set(blocks.size()-1, blocks.getLast().substring(0,toRemove-1));
 
         //concat result blocks
         StringBuilder sb = new StringBuilder();

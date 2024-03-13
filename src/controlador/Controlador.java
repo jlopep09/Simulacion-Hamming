@@ -28,6 +28,7 @@ public class Controlador {
         Coder2 coder2 = new Coder2();
         String result = "";
         result =  coder1.encode(input);
+        System.out.println(result);
         result = coder2.encode(result);
 
         return result;
