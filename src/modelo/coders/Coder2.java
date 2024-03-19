@@ -25,8 +25,11 @@ public class Coder2 implements Coder{
         //Convert the blocks into a block matrix
         int[][] blocksMatrix = matrixIt(blocks);
 
+
         //Now we calculate the matrix product blocksMatrix * G
         int[][] encodeMatrix = MatrixProduct(blocksMatrix, G);
+        printArray(encodeMatrix);
+        System.out.println(GcolumnCount);
         //finally we concat the result string
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<blocks.size(); i++){
@@ -110,12 +113,13 @@ public class Coder2 implements Coder{
         int coder1blockSize = coder1.getCoder1BlockSize();
         int toRemove = input.length() % blockSize;
         System.out.println(toRemove);
-        System.out.println(blocks.getLast().length());
-        if(toRemove> blocks.getLast().length()){
-            toRemove-=blocks.getLast().length();
-            blocks.removeLast();
+        System.out.println(blocks.get(blocks.size()-1).length());
+        if(toRemove> blocks.get(blocks.size()-1).length()){
+            toRemove-=blocks.get(blocks.size()-1).length();
+            blocks.remove(blocks.size()-1);
         }
-        blocks.set(blocks.size()-1, blocks.getLast().substring(0,toRemove-1));
+
+        blocks.set(blocks.size()-1, blocks.get(blocks.size()-1).substring(0,toRemove-1));
 
         //concat result blocks
         StringBuilder sb = new StringBuilder();

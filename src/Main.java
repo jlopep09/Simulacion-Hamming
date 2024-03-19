@@ -5,20 +5,22 @@ import java.math.BigDecimal;
 
 public class Main{
     public static void main(String[] args){
-        prueba2();
+        prueba1();
 
 
     }
-    public void prueba1(){
+    public static void prueba1(){
         System.out.println("_____________________________________________________");
         String Alpha = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ abcdefghiíjklmnñopqrstuvwxyz";
-        String binCodedInput = "00000001100110010010101001011101001";
+        //System.out.println(Alpha.indexOf(' '));
+
+        //String binCodedInput = "00000001100110010010101001011101001";
         Controlador controlador = Controlador.getInstance();
         controlador.setAlphabet(Alpha);
-        System.out.println(controlador.encode("Las"));
-        //System.out.println(controlador.decode("00101101101001110011011001100000000"));
+        //System.out.println(controlador.encode("Hola "));
+        System.out.println(controlador.decode("000111111100001100110101010100011111100110011001111010011100110101010101100110100101100001110101011100110011001111100001110000110011010101010000000011001111111110001111011110000101101000011011001111100000000000110011000110010001111011110000101101011010"));
 
-        System.out.println(controlador.decode("00000001100110010010101001011101001"));
+        //System.out.println(controlador.decode("00000001100110010010101001011101001"));
     }
     public static void prueba2(){
         System.out.println("_____________________________________________________");

@@ -37,10 +37,13 @@ public class Coder1 implements Coder{
                 System.out.println(blockSize);
                 throw  new RuntimeException("binary representation is larger than blockSize");
             }
+            //System.out.println("bloque nuevo sin ajustar: "+temp);
             while(temp.length()<blockSize){
                 temp.insert(0,0+"");
             }
+            //System.out.println("bloque nuevo ajustado: "+temp);
             result.append(temp);
+            //System.out.println("Resultado actual: "+result);
         }
         return result.toString();
     }

@@ -28,7 +28,7 @@ public class Controlador {
         Coder2 coder2 = new Coder2();
         String result = "";
         result =  coder1.encode(input);
-        System.out.println(result);
+        //System.out.println(result);
         result = coder2.encode(result);
 
         return result;
@@ -41,7 +41,7 @@ public class Controlador {
         Coder2 coder2 = new Coder2();
         String result = "";
         result =  coder2.decode(input);
-        System.out.println(result);
+        //System.out.println(result);
         result = coder1.decode(result);
 
         return result;
