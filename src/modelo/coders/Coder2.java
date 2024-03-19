@@ -28,8 +28,8 @@ public class Coder2 implements Coder{
 
         //Now we calculate the matrix product blocksMatrix * G
         int[][] encodeMatrix = MatrixProduct(blocksMatrix, G);
-        printArray(encodeMatrix);
-        System.out.println(GcolumnCount);
+
+
         //finally we concat the result string
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i<blocks.size(); i++){
@@ -53,15 +53,25 @@ public class Coder2 implements Coder{
     public ArrayList<String> blockIt(String input, int sizeOfBlock) {
         ArrayList<String> result = new ArrayList<>();
         while(input.length() >= sizeOfBlock){
-            result.add(input.substring(0,sizeOfBlock));
+
+            String toadd= input.substring(0,sizeOfBlock);
+
+            result.add(toadd);
+
             input = input.substring(sizeOfBlock);
+
         }
+
         if(input.length() > 0 ){
+
             while(input.length() < sizeOfBlock){
                 input = input+"0";
             }
+
             result.add(input);
+
         }
+
         return result;
     }
     private void printArray(int[][] a){
@@ -103,23 +113,32 @@ public class Coder2 implements Coder{
     @Override
     public String decode(String input) {
         //get blocks from input
+
         ArrayList<String> blocks = blockIt(input, GcolumnCount);
         //remove last 3 digits bc G is standard matrix and there is no noise.
         for(int i = 0 ; i<blocks.size(); i++){
             blocks.set(i, blocks.get(i).substring(0,blockSize));
         }
+
+        //todo hasta aqui todo bien
         //remove extra digits added while preparing blocks for coder2
         Coder1 coder1 = new Coder1();
         int coder1blockSize = coder1.getCoder1BlockSize();
-        int toRemove = input.length() % blockSize;
-        System.out.println(toRemove);
-        System.out.println(blocks.get(blocks.size()-1).length());
+
+        int toRemove = 0;
+        for(int i = 0; i<blocks.size();i++){
+            toRemove+=blocks.get(i).length();
+        }
+
+        toRemove = toRemove % coder1blockSize;
+
+
         if(toRemove> blocks.get(blocks.size()-1).length()){
             toRemove-=blocks.get(blocks.size()-1).length();
             blocks.remove(blocks.size()-1);
         }
 
-        blocks.set(blocks.size()-1, blocks.get(blocks.size()-1).substring(0,toRemove-1));
+        blocks.set(blocks.size()-1, blocks.get(blocks.size()-1).substring(0,blocks.get(blocks.size()-1).length()-toRemove));
 
         //concat result blocks
         StringBuilder sb = new StringBuilder();

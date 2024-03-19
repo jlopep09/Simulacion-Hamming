@@ -10,7 +10,7 @@ Implemented Features:
 
 Y - Input Coder
 
-N - Input Decoder
+Y - Input Decoder
 
 N - Canal Noise Tolerance
 

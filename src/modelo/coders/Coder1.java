@@ -33,17 +33,15 @@ public class Coder1 implements Coder{
             StringBuilder temp = new StringBuilder();
             temp.append(_traductor.getBinaryRepresentationFromDecimal(new BigDecimal(_alphabet.getElementPos(input.charAt(i)))));
             if(temp.length() > blockSize){
-                System.out.println(temp.toString());
-                System.out.println(blockSize);
                 throw  new RuntimeException("binary representation is larger than blockSize");
             }
-            //System.out.println("bloque nuevo sin ajustar: "+temp);
+
             while(temp.length()<blockSize){
                 temp.insert(0,0+"");
             }
-            //System.out.println("bloque nuevo ajustado: "+temp);
+
             result.append(temp);
-            //System.out.println("Resultado actual: "+result);
+
         }
         return result.toString();
     }
