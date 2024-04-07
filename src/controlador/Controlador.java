@@ -36,6 +36,7 @@ public class Controlador {
         if(_alphabet == null){
             throw new RuntimeException("Cant decode, you must set up the alphabet");
         }
+
         Coder1 coder1 = new Coder1();
         Coder2 coder2 = new Coder2();
         String result = "";
