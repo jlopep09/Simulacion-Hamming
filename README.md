@@ -12,8 +12,8 @@ Y - Input Coder
 
 Y - Input Decoder
 
-N - Canal Noise Tolerance
+Y - Canal Noise Tolerance
 
 __________________________________________
 
-The jdk that im using is amazon coreto 17.0.9
+The jdk that im using is 21 SDK from module hamming simulation

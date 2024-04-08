@@ -1,5 +1,8 @@
 package modelo.coders;
 
+import modelo.utilities.NoiseFixer;
+import modelo.utilities.traductor;
+
 import java.util.ArrayList;
 
 public class Coder2 implements Coder{
@@ -112,9 +115,45 @@ public class Coder2 implements Coder{
 
     @Override
     public String decode(String input) {
-        //get blocks from input
 
+        //get blocks from input
         ArrayList<String> blocks = blockIt(input, GcolumnCount);
+
+        //Repair Noise
+        NoiseFixer noiseFixer = new NoiseFixer();
+        for (int i = 0; i < blocks.size(); i++) {
+            //prepare vector format
+            int block[][] = new int[blocks.get(i).length()][1];
+            for (int j = 0; j < blocks.get(i).length(); j++) {
+                block[j][0] = Character.getNumericValue(blocks.get(i).charAt(j));
+            }
+            //check noise
+            if(noiseFixer.checkSyndrome(noiseFixer.getSyndrome(block))){
+                //get syndrome
+                int[][] syndrome = noiseFixer.getSyndrome(block);
+                //convert to string format
+                String syndromeString = "";
+                for (int j = 0; j < syndrome.length; j++) {
+                    syndromeString += syndrome[j][0];
+                }
+                //get error position
+                traductor traductor = new traductor();
+                int errorPosition = Integer.valueOf(traductor.getDecimalValueFromBinary(syndromeString));
+                //fix noise
+                String oldBlock = blocks.get(i);
+                String newBlock = "";
+                if(oldBlock.charAt(errorPosition-1)=='0'){
+                    newBlock = oldBlock.substring(0, errorPosition-1) + "1" + oldBlock.substring(errorPosition);
+                }else{
+                    newBlock = oldBlock.substring(0, errorPosition-1) + "0" + oldBlock.substring(errorPosition);
+                }
+                //replace block to the repaired version
+                blocks.set(i, newBlock);
+            }
+
+        }
+
+
         //remove last 3 digits bc G is standard matrix and there is no noise.
         for(int i = 0 ; i<blocks.size(); i++){
             blocks.set(i, blocks.get(i).substring(0,blockSize));
